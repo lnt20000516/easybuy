@@ -37,7 +37,7 @@
             商品总价
             <span style="font-size:20px;color:#EEB422">￥{{total}}</span>
           </p>
-          <el-button>返回购物</el-button>
+          <el-button> <a href="/home">返回购物</a> </el-button>
           <el-button type="primary" @click="confirmSettlement()">确认结算</el-button>
         </div>
       </div>

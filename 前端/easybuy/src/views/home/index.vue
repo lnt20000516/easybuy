@@ -273,7 +273,7 @@ export default {
   }
 };
 </script>
-<style>
+<style >
 .el-menu--collapse {
   width: 125px;
 }
