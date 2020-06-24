@@ -2,7 +2,12 @@ package cn.easybuy.pojo;
 
 import java.util.Date;
 import java.util.List;
-
+/**
+ * 订单类
+ * 实现用户订单的实体类
+ * @author 杜煜兴
+ * @time 2020年6月22
+ */
 public class Order {
     // id
     private Integer id;

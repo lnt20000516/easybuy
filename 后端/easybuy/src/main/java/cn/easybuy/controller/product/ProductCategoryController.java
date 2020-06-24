@@ -12,23 +12,38 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import java.io.IOException;
 
+/**
+ * 商品分类 类
+ * 实现商品分类的增删改查的类
+ * @author 高骏
+ * @time 2020年6月21
+ */
 @RestController
 @RequestMapping("/productCategory")
 public class ProductCategoryController {
     @Resource
     ProductCategoryService productCategoryService;
 
+    /**
+     * 根据条件查询商品列表
+     */
     @RequestMapping("/queryProductCategoryList")
     public String queryProductCategoryList(@RequestParam("from") Integer from,
                                            @RequestParam("pageSize") Integer pageSize) {
         return productCategoryService.queryProductCategoryList(from, pageSize);
     }
 
+    /**
+     * 根据id删除商品
+     */
     @RequestMapping("/deleteById")
     public String deleteById(@RequestParam("id") Integer id) {
         return productCategoryService.deleteById(id);
     }
 
+    /**
+     * 修改商品分类
+     */
     @RequestMapping("/update")
     public String update(@RequestParam("id") Integer id,
                          @RequestParam(value = "name", required = false)String name,
@@ -39,21 +54,34 @@ public class ProductCategoryController {
         return productCategoryService.update(productCategory);
     }
 
+    /**
+     * 根据id查询名字
+     */
     @RequestMapping("/queryNameById")
     public String queryNameById(@RequestParam("id") Integer id) {
         return productCategoryService.queryNameById(id);
     }
 
+    /**
+     * 根据parentId查询
+     */
     @RequestMapping("/queryListByParentId")
     public String queryListByParentId(@RequestParam(value = "parentId", required = false) Integer parentId) {
         return productCategoryService.queryListByParentId(parentId);
     }
 
+    /**
+     * 查询商品分类的条目
+     * @return
+     */
     @RequestMapping("/count")
     public String count() {
         return productCategoryService.count();
     }
 
+    /**
+     * 添加商品分类
+     */
     @RequestMapping("/add")
     public String add(@RequestParam(value = "name")String name,
                       @RequestParam(value = "parentId")Integer parentId,
@@ -61,6 +89,10 @@ public class ProductCategoryController {
         return productCategoryService.add(new ProductCategory(null, name, parentId, type, null));
     }
 
+    /**
+     * 获得所有信息
+     * @return
+     */
     @RequestMapping("/getAll")
     public String getAll() {
         return productCategoryService.getAll();

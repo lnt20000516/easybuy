@@ -1,5 +1,11 @@
 package cn.easybuy.pojo;
 
+/**
+ * 订单详情类
+ * 实现用户订单详情的的实体类
+ * @author 杜煜兴
+ * @time 2020年6月22
+ */
 public class OrderDetail {
     // id
     private Integer id;

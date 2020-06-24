@@ -5,6 +5,12 @@ import cn.easybuy.pojo.UserAddress;
 import org.apache.ibatis.jdbc.SQL;
 import org.springframework.util.StringUtils;
 
+/**
+ * 用户地址类
+ * 实现用户地址的增删改查的拼接类
+ * @author 侯志强
+ * @time 2020年6月21
+ */
 public class UserAddressProvider {
 
     /*

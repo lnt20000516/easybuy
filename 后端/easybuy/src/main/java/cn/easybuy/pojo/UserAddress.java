@@ -2,6 +2,12 @@ package cn.easybuy.pojo;
 
 import java.util.Date;
 
+/**
+ * 用户地址类
+ * 实现用户地址的实体类
+ * @author 侯志强
+ * @time 2020年6月21
+ */
 public class UserAddress {
     // id
     private Integer id;

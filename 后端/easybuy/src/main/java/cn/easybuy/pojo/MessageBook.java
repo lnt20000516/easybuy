@@ -1,5 +1,11 @@
 package cn.easybuy.pojo;
 
+/**
+ * 留言类
+ * 实现用户留言的实体类
+ * @author 杜煜兴
+ * @time 2020年6月21
+ */
 public class MessageBook {
     private Integer id;
     private Integer userId;

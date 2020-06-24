@@ -16,6 +16,12 @@ import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 购物车类
+ * 实现购物车的增删改查的类
+ * @author 侯志强
+ * @time 2020年6月22
+ */
 @Service
 public class ShoppingCartService {
     @Resource
@@ -29,6 +35,11 @@ public class ShoppingCartService {
     @Resource
     ProductMapper productMapper;
 
+    /**
+     * 插入一条数据
+     * @param cart 详情
+     * @return
+     */
     public String insert(ShoppingCart cart) {
         int i = shoppingCartMapper.insert(cart);
         cart.setProduct(productMapper.getProductById(cart.getProductId()));
@@ -42,6 +53,11 @@ public class ShoppingCartService {
                 .toString();
     }
 
+    /**
+     * 根据id删除购物车中的数据
+     * @param id id
+     * @return
+     */
     public String deleteCartById(Integer id) {
         int i = shoppingCartMapper.deleteCartById(id);
 
@@ -51,6 +67,12 @@ public class ShoppingCartService {
                 .toString();
     }
 
+    /**
+     * 根据id修改数量
+     * @param id id
+     * @param quantity 数量
+     * @return
+     */
     public String updateQuantityById(Integer id, Integer quantity) {
         int i = shoppingCartMapper.updateQuantityById(id, quantity);
 
@@ -60,7 +82,11 @@ public class ShoppingCartService {
                 .toString();
     }
 
-    // 提交，根据用户id删除表中的所有信息
+    /**
+     * 提交（信息写入订单和订单详情中），根据用户id删除表中的所有信息
+     * @param detail
+     * @return
+     */
     public String submit(Order detail) {
         // 添加到order表中
         List<ShoppingCart> list = shoppingCartMapper.queryCartByUserId(detail.getUserId());
@@ -82,6 +108,11 @@ public class ShoppingCartService {
         return orderService.getOrderById(detail.getId());
     }
 
+    /**
+     * 根据用户id获得购物车中的内容
+     * @param userId 用户的id
+     * @return
+     */
     public String getShopperCartByUserId(Integer userId) {
         List<ShoppingCart> list = shoppingCartMapper.queryCartByUserId(userId);
         for (ShoppingCart shoppingCart : list) {

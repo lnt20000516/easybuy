@@ -1,5 +1,11 @@
 package cn.easybuy.pojo;
 
+/**
+ * 商品分类 类
+ * 实现商品分类的实体类
+ * @author 高骏
+ * @time 2020年6月21
+ */
 public class ProductCategory {
     // Id
     private Integer id;

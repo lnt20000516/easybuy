@@ -10,12 +10,22 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
+/**
+ * 用户地址类
+ * 实现用户地址的增删改查的类
+ * @author 侯志强
+ * @time 2020年6月21
+ */
 @RestController
 @RequestMapping("/userAddress")
 public class UserAddressController {
     @Resource
     UserAddressService userAddressService;
 
+    /**
+     * 添加一条数据
+     * @return
+     */
     @RequestMapping("/insert")
     public String insert(@RequestParam("address") String address,
                          @RequestParam("userId") Integer userId,

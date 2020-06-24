@@ -7,6 +7,12 @@ import net.sf.json.JSONObject;
 
 import java.util.List;
 
+/**
+ * JSON数据类
+ * 实现JSON数据的类
+ * @author 杜煜兴
+ * @time 2020年6月23
+ */
 public class MyJsonUtils<T> {
     private JSONObject jsonObject = new JSONObject();
 
@@ -26,14 +32,13 @@ public class MyJsonUtils<T> {
         return this;
     }
 
-    public void addCode(String code) {
-        jsonObject.put("code", code);
-    }
 
-    public void addMessage(String message) {
-        jsonObject.put("message", message);
-    }
-
+    /**
+     * 键值对添加
+     * @param key
+     * @param value
+     * @return
+     */
     public MyJsonUtils<T> put(Object key, Object value) {
         jsonObject.put(key, value);
         return this;

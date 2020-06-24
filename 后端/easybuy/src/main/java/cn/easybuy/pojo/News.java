@@ -1,7 +1,12 @@
 package cn.easybuy.pojo;
 
 import java.util.Date;
-
+/**
+ * 新闻类
+ * 实现新闻的实体类
+ * @author 高骏
+ * @time 2020年6月21
+ */
 public class News {
     // id
     private Integer id;

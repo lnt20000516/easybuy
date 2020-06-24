@@ -4,6 +4,12 @@ import cn.easybuy.pojo.News;
 import org.apache.ibatis.jdbc.SQL;
 import org.springframework.util.StringUtils;
 
+/**
+ * 新闻类
+ * 实现新闻的增删改查的拼接的类
+ * @author 高骏
+ * @time 2020年6月21
+ */
 public class NewsProvider {
     public String update(News news) {
         SQL sql = new SQL().UPDATE("easybuy_news").WHERE("id=#{news.id}");

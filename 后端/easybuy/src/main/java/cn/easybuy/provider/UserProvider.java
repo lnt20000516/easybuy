@@ -5,7 +5,10 @@ import org.apache.ibatis.jdbc.SQL;
 import org.springframework.util.StringUtils;
 
 /**
- * 传参有空的检测
+ * 用户类
+ * 实现用户增删改查的拼接类
+ * @author 刘楠婷
+ * @time 2020年6月23
  */
 public class UserProvider {
     public String insertUserByParam(User user) {

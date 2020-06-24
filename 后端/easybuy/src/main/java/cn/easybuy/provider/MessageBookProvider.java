@@ -4,6 +4,12 @@ import cn.easybuy.pojo.MessageBook;
 import org.apache.ibatis.jdbc.SQL;
 import org.springframework.util.StringUtils;
 
+/**
+ * 留言类
+ * 实现用户留言的增删改查拼接的类
+ * @author 杜煜兴
+ * @time 2020年6月21
+ */
 public class MessageBookProvider {
     public String insert(MessageBook messageBook) {
         SQL sql = new SQL().INSERT_INTO("easybuy_message_book");

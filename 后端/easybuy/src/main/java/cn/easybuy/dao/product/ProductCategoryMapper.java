@@ -7,6 +7,12 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/**
+ * 商品分类 类
+ * 实现商品分类的增删改查的类
+ * @author 高骏
+ * @time 2020年6月21
+ */
 @Mapper
 @Component
 public interface ProductCategoryMapper {
@@ -23,6 +29,10 @@ public interface ProductCategoryMapper {
     List<ProductCategory> queryProductCategoryList(@Param("from") Integer from,
                                                    @Param("pageSize") Integer pageSize);
 
+    /**
+     * 查询商品分类的条目
+     * @return
+     */
     @Select("select count(1) from easybuy_product_category")
     int count();
 

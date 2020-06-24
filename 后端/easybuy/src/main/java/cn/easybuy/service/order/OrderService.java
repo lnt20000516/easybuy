@@ -23,6 +23,11 @@ public class OrderService {
     @Resource
     OrderDetailMapper orderDetailMapper;
 
+    /**
+     * 添加一条数据
+     * @param order 需要插入的信息
+     * @return
+     */
     public String add(Order order) {
         int i = orderMapper.add(order);
         // 添加到list中
@@ -37,6 +42,11 @@ public class OrderService {
                 .toString();
     }
 
+    /**
+     * 根据id获得order
+     * @param id easybuy_order中的主键id
+     * @return
+     */
     public String getOrderById(Integer id) {
         List<Order> list = new ArrayList<>();
         Order order = orderMapper.getOrderById(id);
@@ -50,6 +60,11 @@ public class OrderService {
                 .toString();
     }
 
+    /**
+     * 根据用户id获得用户的订单，不传返回全部
+     * @param userId 用户id
+     * @return
+     */
     public String getOrderByUserId(Integer userId) {
         List<Order> orders = orderMapper.getOrderByUserId(userId);
         MyJsonUtils<Order> json = new MyJsonUtils<>();

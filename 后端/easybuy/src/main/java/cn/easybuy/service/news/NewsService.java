@@ -13,12 +13,20 @@ import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+/**
+ * 新闻类
+ * 实现新闻的增删改查的类
+ * @author 高骏
+ * @time 2020年6月21
+ */
 @Service
 public class NewsService {
     @Resource
     NewsMapper newsMapper;
 
+    /**
+     * 添加新闻
+     */
     public String add(News news) {
         if(!StringUtils.hasText(news.getTitle()) || !StringUtils.hasText(news.getContent()) || !StringUtils.hasText(news.getCreateTime())) {
             return new MyJsonUtils<News>().put("code", 500).put("message", "有空参数").toString();
@@ -40,10 +48,18 @@ public class NewsService {
         return new MyJsonUtils<News>().put("code", 500).put("message", "未知错误").toString();
     }
 
+    /**
+     * 根据标题查看该标题是否已经被使用
+     * @param title 标题
+     * @return
+     */
     public boolean checkTitle(String title) {
         return newsMapper.checkTitle(title) > 0;
     }
 
+    /**
+     * 修改信息
+     */
     public String update(News news) {
         News t = newsMapper.queryNewsById(news.getId());
         //如果传了title
@@ -73,6 +89,9 @@ public class NewsService {
                 .toString();
     }
 
+    /**
+     * 根据id删除新闻
+     */
     public String deleteById(Integer id) {
         int i = newsMapper.deleteById(id);
         MyJsonUtils<News> json = new MyJsonUtils<>();
@@ -94,6 +113,9 @@ public class NewsService {
         return json.toString();
     }
 
+    /**
+     * 查询新闻列表
+     */
     public String queryNewsList(Integer from, Integer pageSize) {
         List<News> list;
         if(from != null || pageSize != null) {
@@ -112,6 +134,9 @@ public class NewsService {
                 .toString();
     }
 
+    /**
+     * 查询新闻的数目
+     */
     public String count() {
         return new MyJsonUtils<Product>()
                 .put("code", 200)

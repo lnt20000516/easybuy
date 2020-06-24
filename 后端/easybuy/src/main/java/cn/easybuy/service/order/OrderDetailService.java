@@ -10,14 +10,23 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * 订单详情类
+ * 实现用户订单详情的增删改查的类
+ * @author 杜煜兴
+ * @time 2020年6月22
+ */
 @Service
 public class OrderDetailService {
     @Resource
     OrderDetailMapper orderDetailMapper;
     @Resource
     ProductMapper productMapper;
-
+    /**
+     * 添加一条数据
+     * @param orderDetail 订单详情的内容
+     * @return
+     */
     public String add(OrderDetail orderDetail) {
         Product product = productMapper.getProductById(orderDetail.getProductId());
         // 如果product为null那他在数据库中没有该商品
@@ -46,6 +55,9 @@ public class OrderDetailService {
                 .toString();
     }
 
+    /**
+     * 根据id查询订单
+     */
     public String getOrderDetailById(Integer id) {
         List<OrderDetail> list = new ArrayList<>();
         list.add(orderDetailMapper.getOrderDetailById(id));
@@ -56,6 +68,11 @@ public class OrderDetailService {
                 .toString();
     }
 
+    /**
+     * 根据订单id获得它下面的所有订单详情
+     * @param orderId 订单id（orderId）
+     * @return
+     */
     public String getOrderDetailList(Integer orderId) {
         List<OrderDetail> list = orderDetailMapper.getOrderDetailList(orderId);
         return new MyJsonUtils<OrderDetail>()

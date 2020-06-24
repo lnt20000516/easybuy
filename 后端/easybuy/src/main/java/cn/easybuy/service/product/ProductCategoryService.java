@@ -13,11 +13,20 @@ import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 商品分类 类
+ * 实现商品分类的增删改查的类
+ * @author 高骏
+ * @time 2020年6月21
+ */
 @Service
 public class ProductCategoryService {
     @Resource
     ProductCategoryMapper productCategoryMapper;
 
+    /**
+     * 修改商品分类
+     */
     public String update(ProductCategory productCategory) {
         return new MyJsonUtils<Product>()
                 .put("code", 200)
@@ -25,6 +34,9 @@ public class ProductCategoryService {
                 .toString();
     }
 
+    /**
+     * 根据id删除商品
+     */
     public String deleteById(Integer id) {
         return new MyJsonUtils<Product>()
                 .put("code", 200)
@@ -32,6 +44,9 @@ public class ProductCategoryService {
                 .toString();
     }
 
+    /**
+     * 根据条件查询商品列表
+     */
     public String queryProductCategoryList(Integer from, Integer pageSize) {
         List<ProductCategory> list = productCategoryMapper.queryProductCategoryList(from, pageSize);
         return new MyJsonUtils<ProductCategory>()
@@ -43,6 +58,10 @@ public class ProductCategoryService {
                 .toString();
     }
 
+    /**
+     * 查询商品分类的条目
+     * @return
+     */
     public String count() {
         return new MyJsonUtils<Product>()
                 .put("code", 200)
@@ -51,6 +70,9 @@ public class ProductCategoryService {
                 .toString();
     }
 
+    /**
+     * 根据id查询名字
+     */
     public String queryNameById(Integer id) {
         String name = productCategoryMapper.queryNameById(id);
         System.out.println(name);
@@ -67,6 +89,9 @@ public class ProductCategoryService {
                 .toString();
     }
 
+    /**
+     * 根据parentId查询
+     */
     public String queryListByParentId(Integer parentId) {
         List<ProductCategory> list;
         if(parentId == null) {
@@ -82,6 +107,9 @@ public class ProductCategoryService {
                 .toString();
     }
 
+    /**
+     * 添加商品分类
+     */
     public String add(ProductCategory productCategory) {
         productCategoryMapper.add(productCategory);
         List<ProductCategory> list = new ArrayList<>();
@@ -93,6 +121,10 @@ public class ProductCategoryService {
                 .toString();
     }
 
+    /**
+     * 获得所有信息
+     * @return
+     */
     public String getAll() {
         JSONObject json = new JSONObject();
 

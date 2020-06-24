@@ -4,6 +4,12 @@ import cn.easybuy.pojo.Product;
 import org.apache.ibatis.jdbc.SQL;
 import org.springframework.util.StringUtils;
 
+/**
+ * 商品详情 类
+ * 实现商品详情的增删改查的拼接类
+ * @author 高骏
+ * @time 2020年6月21
+ */
 public class ProductProvider {
     public String insertProduct(Product product) {
         SQL sql = new SQL().INSERT_INTO("easybuy_product");

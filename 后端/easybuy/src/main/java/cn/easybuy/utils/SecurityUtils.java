@@ -2,6 +2,12 @@ package cn.easybuy.utils;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
+/**
+ * 加密类
+ * 数据加密的类
+ * @author 杜煜兴
+ * @time 2020年6月21
+ */
 public class SecurityUtils {
     /**
      * md5加密

@@ -9,9 +9,17 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * 过滤器
+ * @author 刘楠婷
+ * @time 2020年6月23
+ */
 @Component
 public class CorsFilter implements Filter {
 
+    /**
+     * 运行跨域访问
+     */
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
         //设置允许跨域访问
@@ -25,6 +33,11 @@ public class CorsFilter implements Filter {
         chain.doFilter(req, res);
     }
 
+    /**
+     * 获得当前时间
+     * @param time 时间戳
+     * @return
+     */
     public String getTime(long time) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
         return format.format(new Date(time));

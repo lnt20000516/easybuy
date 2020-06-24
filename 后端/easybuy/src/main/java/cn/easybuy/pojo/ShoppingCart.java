@@ -1,5 +1,11 @@
 package cn.easybuy.pojo;
 
+/**
+ * 购物车类
+ * 实现购物车的实体类
+ * @author 侯志强
+ * @time 2020年6月22
+ */
 public class ShoppingCart {
     private Integer id;
     private Integer productId;

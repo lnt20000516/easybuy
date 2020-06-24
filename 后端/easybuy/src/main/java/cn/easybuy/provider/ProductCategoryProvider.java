@@ -4,7 +4,12 @@ import cn.easybuy.pojo.Product;
 import cn.easybuy.pojo.ProductCategory;
 import org.apache.ibatis.jdbc.SQL;
 import org.springframework.util.StringUtils;
-
+/**
+ * 商品分类 类
+ * 实现商品分类的增删改查的拼接类
+ * @author 高骏
+ * @time 2020年6月21
+ */
 public class ProductCategoryProvider {
     public String update(ProductCategory productCategory) {
         SQL sql = new SQL().UPDATE("easybuy_product_category");

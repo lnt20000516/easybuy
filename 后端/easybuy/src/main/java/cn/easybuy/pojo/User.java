@@ -1,5 +1,11 @@
 package cn.easybuy.pojo;
 
+/**
+ * 用户类
+ * 实现用户的实体类
+ * @author 刘楠婷
+ * @time 2020年6月23
+ */
 public class User {
     private Integer id;//主键
     private String loginName;//登录名

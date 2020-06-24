@@ -12,6 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import java.util.List;
 
+/**
+ * 用户类
+ * 实现用户增删改查的类
+ * @author 刘楠婷
+ * @time 2020年6月23
+ */
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -52,6 +58,10 @@ public class UserController {
         return userService.checkLoginName(loginName);
     }
 
+    /**
+     * 检测用户登录是否成功
+     * @return
+     */
     @RequestMapping("/login")
     public String loginByLoginNameAndPassword(@RequestParam("loginName")String loginName, @RequestParam("password")String password) {
         User user = new User();
@@ -62,21 +72,38 @@ public class UserController {
         return userService.loginByLoginNameAndPassword(user);
     }
 
+    /**
+     * 根据id删除用户
+     * @param id id
+     * @return
+     */
     @RequestMapping("/deleteUserById")
     public String deleteUserById(@RequestParam("id")Integer id) {
         return userService.deleteUserById(id);
     }
 
+    /**
+     * 获得用户表中的条目数
+     * @return
+     */
     @RequestMapping("/count")
     public String count() {
         return userService.count();
     }
 
+    /**
+     * 获得所有用户的信息
+     * @return
+     */
     @RequestMapping("/getAll")
     public String getAll() {
         return userService.getAll();
     }
 
+    /**
+     * 根据用户的id更新用户信息
+     * @return
+     */
     @RequestMapping("/updateUserById")
     public String updateUserById(@RequestParam(value = "id", required = false)Integer id,
                                  @RequestParam(value = "loginName", required = false)String loginName,
@@ -89,12 +116,24 @@ public class UserController {
         return userService.updateUserById(new User(id, loginName, userName, identityCode, email, mobile, type));
     }
 
+    /**
+     * 根据id或login Name获得用户信息
+     * @param id id
+     * @param loginName 登录名
+     * @return
+     */
     @RequestMapping("/getUser")
     public String getUser(@RequestParam(value = "id", required = false)Integer id,
                           @RequestParam(value = "loginName", required = false) String loginName) {
         return userService.getUser(id, loginName);
     }
 
+    /**
+     * 分页查询
+     * @param from 开始的位置
+     * @param pageSize 个数
+     * @return
+     */
     @RequestMapping("/getUserList")
     public String getUserList(@RequestParam("from") Integer from,
                               @RequestParam("pageSize") Integer pageSize) {

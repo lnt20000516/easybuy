@@ -9,11 +9,22 @@ import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 用户类
+ * 实现用户增删改查的类
+ * @author 刘楠婷
+ * @time 2020年6月23
+ */
 @Service
 public class UserService {
     @Resource
     private UserMapper userMapper;
 
+    /**
+     * 添加用户信息
+     * @param user 用户信息
+     * @return
+     */
     public String add(User user) {
         boolean ok = false;
         MyJsonUtils<User> json = new MyJsonUtils<>();
@@ -49,10 +60,18 @@ public class UserService {
         return json.toString();
     }
 
+    /**
+     * 检测用户名是否已经被使用
+     */
     public int checkLoginName(String loginName) {
         return userMapper.checkLoginName(loginName);
     }
 
+    /**
+     * 检测用户登录是否成功
+     * @param user
+     * @return
+     */
     public String loginByLoginNameAndPassword(User user) {
         boolean ok = false;
         MyJsonUtils<User> json = new MyJsonUtils<>();
@@ -88,6 +107,11 @@ public class UserService {
     }
 
 
+    /**
+     * 根据id删除用户
+     * @param id id
+     * @return
+     */
     public String deleteUserById(Integer id) {
         int i = userMapper.deleteUserById(id);
         MyJsonUtils<User> json = new MyJsonUtils<>();
@@ -109,6 +133,10 @@ public class UserService {
         return json.toString();
     }
 
+    /**
+     * 获得用户表中的条目数
+     * @return
+     */
     public String count() {
         return new MyJsonUtils<User>()
                 .put("code", 200)
@@ -117,6 +145,10 @@ public class UserService {
                 .toString();
     }
 
+    /**
+     * 获得所有用户的信息
+     * @return
+     */
     public String getAll(){
         MyJsonUtils<User> json = new MyJsonUtils<>();
         List<User> users = userMapper.getAll();
@@ -128,6 +160,12 @@ public class UserService {
         return json.toString();
     }
 
+    /**
+     * 根据id或login Name获得用户信息
+     * @param id id
+     * @param loginName 登录名
+     * @return
+     */
     public String getUser(Integer id, String loginName) {
         if(id == null && loginName == null) {
             return new MyJsonUtils<User>().put("code", 500).put("message", "id和loginName不能全为空").toString();
@@ -155,6 +193,11 @@ public class UserService {
         return json.toString();
     }
 
+    /**
+     * 根据用户的id更新用户信息
+     * @param user 用户的id和用户的详情
+     * @return
+     */
     public String updateUserById(User user) {
         if(user.getId() == null) {
             return new MyJsonUtils<User>().put("code", 500).put("message", "缺少必传参数id").toString();
@@ -188,6 +231,12 @@ public class UserService {
         return json.toString();
     }
 
+    /**
+     * 分页查询
+     * @param from 开始的位置
+     * @param pageSize 个数
+     * @return
+     */
     public String getUserList(Integer from, Integer pageSize) {
         List<User> list = userMapper.getUserList(from, pageSize);
 

@@ -15,12 +15,22 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
+/**
+ * 商品详情 类
+ * 实现商品详情的增删改查的类
+ * @author 高骏
+ * @time 2020年6月21
+ */
 @RestController
 @RequestMapping("/product")
 public class ProductController {
     @Resource
     ProductService productService;
 
+    /**
+     * 添加商品详情
+     * @return
+     */
     @RequestMapping("/add")
     public String add(@RequestParam("name")String name,
                       @RequestParam("price")Float price,
@@ -40,11 +50,20 @@ public class ProductController {
         return productService.add(product);
     }
 
+    /**
+     * 根据id删除商品
+     * @param id id
+     * @return
+     */
     @RequestMapping("/deleteProductById")
     public String deleteProductById(@RequestParam("id") Integer id) {
         return productService.deleteProductById(id);
     }
 
+    /**
+     * 根据id修改商品
+     * @return
+     */
     @RequestMapping("/update")
     public String update(@RequestParam("id") Integer id,
                       @RequestParam(value = "name", required = false)String name,
@@ -66,11 +85,25 @@ public class ProductController {
         return productService.update(product);
     }
 
+    /**
+     * 根据id获得商品
+     * @param id id
+     * @return
+     */
     @RequestMapping("/getProductById")
     public String getProductById(@RequestParam("id") Integer id) {
         return productService.getProductById(id);
     }
 
+    /**
+     * 分页查询,根据关键字模糊查询,级别查询
+     * @param from 开始位置
+     * @param pageSize 大小
+     * @param proName 模糊查询关键字
+     * @param categoryId 级别id
+     * @param level 级别（1：一级，2：二级，3：三级)
+     * @return
+     */
     @RequestMapping("/getProductList")
     public String getProductList(@RequestParam(value = "from", required = false)Integer from,
                       @RequestParam(value = "pageSize", required = false)Integer pageSize,
@@ -86,6 +119,10 @@ public class ProductController {
         ImageUtils.image(name, response);
     }
 
+    /**
+     * 商品的个数
+     * @return
+     */
     @RequestMapping("/count")
     public String count() {
         return productService.count();
